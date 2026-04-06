@@ -4,11 +4,15 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWorkspaceStore } from "@/store/useWorkspaceStore";
 
-export default function Canvas() {
+export default function Canvas({ isDark }: { isDark: boolean }) {
   const { desk, chair, monitor, accessories } = useWorkspaceStore();
 
   return (
-    <div className="relative w-120 h-100 border rounded border-none overflow-hidden">
+    <div
+      className={`relative w-120 h-100 overflow-hidden transition-all duration-500 ${
+        isDark ? "brightness-75 contrast-110 saturate-75" : ""
+      }`}
+    >
       <AnimatePresence mode="wait">
         {desk && (
           <motion.div
@@ -68,6 +72,19 @@ export default function Canvas() {
                       zIndex: item.position?.zIndex,
                     }}
                   >
+                    {isDark && item.id === "lamp-1" && (
+                      <div
+                        className="absolute pointer-events-none blur-2xl"
+                        style={{
+                          width: item.size,
+                          height: item.size,
+                          background:
+                            "radial-gradient(circle, rgba(255, 220, 120, 0.8) 0%, rgba(255, 180, 80, 0.4) 40%, transparent 70%)",
+                          transform: "scale(1.8)",
+                          zIndex: -1,
+                        }}
+                      />
+                    )}
                     <Image
                       src={item.image}
                       alt={item.name}
@@ -101,49 +118,6 @@ export default function Canvas() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* <AnimatePresence mode="wait">
-        {monitor && (
-          <motion.div
-            key={monitor.id}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{
-              position: "absolute",
-              bottom: monitor.position?.bottom,
-              left: monitor.position?.left,
-            }}
-            className="z-10"
-          >
-            <Image
-              src={monitor.image}
-              alt={monitor.name}
-              width={monitor.size}
-              height={monitor.size}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence> */}
-
-      {/* {accessories.map((item) => (
-        <motion.div
-          key={item.id}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3 }}
-          style={{
-            position: "absolute",
-            top: item.position?.top,
-            left: item.position?.left,
-            right: item.position?.right,
-          }}
-          className="z-40"
-        >
-          <Image src={item.image} alt={item.name} width={100} height={100} />
-        </motion.div>
-      ))} */}
     </div>
   );
 }

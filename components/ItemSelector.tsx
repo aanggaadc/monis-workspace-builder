@@ -109,6 +109,7 @@ export default function ItemSelector() {
                   src={item.image}
                   alt={item.name}
                   fill
+                  sizes="100%"
                   className="object-contain"
                 />
               </div>

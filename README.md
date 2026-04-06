@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🖥️ Workspace Builder
 
-## Getting Started
+Interactive workspace builder built with Next.js. Users can customize their desk setup by selecting items like desks, chairs, monitors, and accessories with real-time preview.
 
-First, run the development server:
+---
 
-```bash
+## ✨ Features
+
+- 🎯 Interactive canvas preview
+- 🪑 Select desk, chair, monitor, and accessories
+- 🔒 Conditional selection (monitor requires desk)
+- 🔁 Toggle accessories (add/remove)
+- 🎨 Smooth animations with Framer Motion
+- 📱 Responsive UI with Tailwind CSS
+- ⚡ State management with Zustand
+
+---
+
+## 🧱 Tech Stack
+
+- Framework: Next.js (App Router)
+- Styling: Tailwind CSS
+- State Management: Zustand
+- Animation: Framer Motion
+- Image Optimization: Next/Image
+
+---
+
+## 📂 Project Structure
+
+src/
+│
+├── app/
+│   └── builder/
+│       └── page.tsx
+│
+├── components/
+│   ├── Canvas.tsx
+│   ├── ItemSelector.tsx
+│   └── SummaryPanel.tsx
+│
+├── data/
+│   └── products.ts
+│
+├── store/
+│   └── useWorkspaceStore.ts
+│
+├── types/
+│   └── workspace.ts
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone project
+
+git clone https://github.com/your-repo/workspace-builder.git
+cd workspace-builder
+
+### 2. Install dependencies
+
+npm install
+
+### 3. Run development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 Core Logic
 
-## Learn More
+### State Management (Zustand)
 
-To learn more about Next.js, take a look at the following resources:
+- desk, chair, monitor → single select
+- accessories → multi select (toggle)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Conditional Selection
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Monitor hanya bisa dipilih jika desk sudah ada
 
-## Deploy on Vercel
+### Canvas Rendering
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Layered rendering (desk → monitor → accessories → chair)
+- Absolute positioning
+- Animated with Framer Motion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🎨 UI Behavior
+
+- Selected item → highlight
+- Disabled tab → reduced opacity
+- Consistent card height across items
+- Image auto-fit using object-contain
+
+---
+
+## ⚠️ Known Limitations
+
+- No drag & drop positioning (yet)
+- No persistence (refresh resets state)
+- Fixed item positioning from data
+
+---
+
+## 🛠️ Future Improvements
+
+- Drag & drop accessories
+- Save / load workspace config
+- Price calculation & summary
+- Undo / redo system
+- Multi-monitor support
+- API-driven product data
+
+---
+
+## 👨‍💻 Author
+
+Built by Angga

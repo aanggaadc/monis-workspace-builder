@@ -9,7 +9,7 @@ export default function Canvas({ isDark }: { isDark: boolean }) {
 
   return (
     <div
-      className={`relative w-120 h-100 overflow-hidden transition-all duration-500 ${
+      className={`relative scale-75 md:scale-100 w-120 h-100 overflow-hidden transition-all duration-500 ${
         isDark ? "brightness-75 contrast-110 saturate-75" : ""
       }`}
     >

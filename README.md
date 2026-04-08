@@ -28,6 +28,7 @@ Interactive workspace builder built with Next.js. Users can customize their desk
 
 ## 📂 Project Structure
 
+```
 src/
 │
 ├── app/
@@ -47,6 +48,7 @@ src/
 │
 ├── types/
 │   └── workspace.ts
+```
 
 ---
 

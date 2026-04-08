@@ -38,7 +38,7 @@ export default function BuilderPage() {
         <ItemSelector />
       </div>
 
-      <div className="absolute bottom-42 md:bottom-55 2xl:bottom-65 left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-[17%] md:bottom-55 2xl:bottom-65 left-1/2 -translate-x-1/2">
         <Canvas isDark={isDark} />
       </div>
 
